@@ -38,9 +38,15 @@ const addGameController = async (req, res) => {
     });
 };
 
-// Получим игры из JSON-файла и отправим в ответ на запрос
-const sendAllGames = async (req, res) => {
-    res.send(req.games);
+//Получим игры из JSON-файла и отправим в ответ на запрос
+// const sendAllGames = async (req, res) => {
+//     res.send(req.games);
+// };
+
+const sendAllGames = (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    // Вернём найденные игры в формате JSON
+    res.end(JSON.stringify(req.gamesArray));
 };
 
 const deleteGame = async (req, res) => {
